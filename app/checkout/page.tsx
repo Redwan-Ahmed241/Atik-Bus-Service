@@ -90,7 +90,9 @@ export default function CheckoutPage() {
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center">
           <AlertCircle className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-slate-700 mb-2">No Booking Data</h2>
+          <h2 className="text-xl font-bold text-slate-700 mb-2">
+            No Booking Data
+          </h2>
           <p className="text-slate-500 mb-4">Please start a new booking.</p>
           <button
             onClick={() => router.push("/")}
@@ -164,9 +166,13 @@ export default function CheckoutPage() {
                   transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   className="w-16 h-16 border-4 border-navy-100 border-t-green-500 rounded-full mx-auto mb-6"
                 />
-                <h3 className="text-xl font-bold text-navy-800 mb-2">Processing Payment</h3>
+                <h3 className="text-xl font-bold text-navy-800 mb-2">
+                  Processing Payment
+                </h3>
                 <p className="text-sm text-slate-500">
-                  Confirming your {paymentMethods.find((m) => m.id === paymentMethod)?.name} payment...
+                  Confirming your{" "}
+                  {paymentMethods.find((m) => m.id === paymentMethod)?.name}{" "}
+                  payment...
                 </p>
               </motion.div>
             </motion.div>
@@ -184,7 +190,9 @@ export default function CheckoutPage() {
                 {/* Left: Payment Methods */}
                 <div className="lg:col-span-3 space-y-5">
                   <div className="bg-white rounded-2xl border border-slate-100 p-5 sm:p-6">
-                    <h3 className="font-bold text-navy-800 text-lg mb-5">Payment Method</h3>
+                    <h3 className="font-bold text-navy-800 text-lg mb-5">
+                      Payment Method
+                    </h3>
 
                     <div className="grid grid-cols-2 gap-3">
                       {paymentMethods.map((method) => (
@@ -203,9 +211,13 @@ export default function CheckoutPage() {
                           >
                             {method.icon}
                           </div>
-                          <div className="font-semibold text-sm text-navy-800">{method.name}</div>
+                          <div className="font-semibold text-sm text-navy-800">
+                            {method.name}
+                          </div>
                           <div className="text-[10px] text-slate-400 mt-0.5">
-                            {method.id === "card" ? "Visa / Mastercard" : "Mobile Financial Service"}
+                            {method.id === "card"
+                              ? "Visa / Mastercard"
+                              : "Mobile Financial Service"}
                           </div>
                           {paymentMethod === method.id && (
                             <CheckCircle2
@@ -224,14 +236,28 @@ export default function CheckoutPage() {
                           <Info className="w-4 h-4 text-navy-500 mt-0.5 shrink-0" />
                           <div>
                             <p className="text-slate-600 font-medium mb-1">
-                              How to pay via {paymentMethods.find((m) => m.id === paymentMethod)?.name}:
+                              How to pay via{" "}
+                              {
+                                paymentMethods.find(
+                                  (m) => m.id === paymentMethod,
+                                )?.name
+                              }
+                              :
                             </p>
                             <ol className="text-xs text-slate-500 space-y-1 list-decimal pl-3">
                               <li>
                                 Open your{" "}
-                                {paymentMethods.find((m) => m.id === paymentMethod)?.name} app
+                                {
+                                  paymentMethods.find(
+                                    (m) => m.id === paymentMethod,
+                                  )?.name
+                                }{" "}
+                                app
                               </li>
-                              <li>Select &quot;Payment&quot; and enter merchant number</li>
+                              <li>
+                                Select &quot;Payment&quot; and enter merchant
+                                number
+                              </li>
                               <li>Enter amount: {formatBDT(totalPrice)}</li>
                               <li>Confirm with your PIN</li>
                             </ol>
@@ -245,7 +271,9 @@ export default function CheckoutPage() {
                 {/* Right: Summary */}
                 <div className="lg:col-span-2">
                   <div className="bg-white rounded-2xl border border-slate-100 p-5 sticky top-24">
-                    <h3 className="font-bold text-navy-800 text-lg mb-4">Order Summary</h3>
+                    <h3 className="font-bold text-navy-800 text-lg mb-4">
+                      Order Summary
+                    </h3>
 
                     <div className="space-y-3 text-sm mb-5">
                       <div className="flex justify-between">
@@ -274,25 +302,34 @@ export default function CheckoutPage() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-500">Passenger</span>
-                        <span className="font-medium text-navy-800">{passengerInfo.name}</span>
+                        <span className="font-medium text-navy-800">
+                          {passengerInfo.name}
+                        </span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-500">Mobile</span>
-                        <span className="font-medium text-navy-800">{passengerInfo.mobile}</span>
+                        <span className="font-medium text-navy-800">
+                          {passengerInfo.mobile}
+                        </span>
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <div className="flex justify-between">
                           <span className="text-slate-500">
-                            {selectedSeats.length} × {formatBDT(selectedBus.fare)}
+                            {selectedSeats.length} ×{" "}
+                            {formatBDT(selectedBus.fare)}
                           </span>
-                          <span className="font-medium text-navy-800">{formatBDT(totalPrice)}</span>
+                          <span className="font-medium text-navy-800">
+                            {formatBDT(totalPrice)}
+                          </span>
                         </div>
                       </div>
 
                       <div className="border-t border-slate-100 pt-3">
                         <div className="flex justify-between items-center">
-                          <span className="font-bold text-navy-800 text-base">Total</span>
+                          <span className="font-bold text-navy-800 text-base">
+                            Total
+                          </span>
                           <span className="text-2xl font-bold text-green-600">
                             {formatBDT(totalPrice)}
                           </span>
@@ -355,8 +392,12 @@ export default function CheckoutPage() {
                           <Bus className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-lg">Attik Bus Service</h3>
-                          <p className="text-navy-300 text-xs">E-Ticket / Digital Boarding Pass</p>
+                          <h3 className="font-bold text-lg">
+                            Atik Bus Service
+                          </h3>
+                          <p className="text-navy-300 text-xs">
+                            E-Ticket / Digital Boarding Pass
+                          </p>
                         </div>
                       </div>
                       <div className="text-right">
@@ -375,18 +416,26 @@ export default function CheckoutPage() {
                         <div className="text-2xl font-bold text-navy-800">
                           {formatTime(selectedBus.departureTime)}
                         </div>
-                        <div className="text-sm font-medium text-slate-600">Kushtia</div>
-                        <div className="text-[10px] text-slate-400">Mojampur Gate</div>
+                        <div className="text-sm font-medium text-slate-600">
+                          Kushtia
+                        </div>
+                        <div className="text-[10px] text-slate-400">
+                          Mojampur Gate
+                        </div>
                       </div>
 
                       <div className="flex-1 mx-4 flex flex-col items-center gap-1">
-                        <div className="text-xs text-slate-400 font-medium">{route?.duration}</div>
+                        <div className="text-xs text-slate-400 font-medium">
+                          {route?.duration}
+                        </div>
                         <div className="w-full h-[2px] bg-slate-200 relative">
                           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-navy-800 rounded-full border-2 border-white" />
                           <Bus className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 text-green-500 bg-white" />
                           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
                         </div>
-                        <div className="text-xs text-slate-400 font-medium">{route?.distance}</div>
+                        <div className="text-xs text-slate-400 font-medium">
+                          {route?.distance}
+                        </div>
                       </div>
 
                       <div className="text-center">
@@ -396,7 +445,9 @@ export default function CheckoutPage() {
                         <div className="text-sm font-medium text-slate-600">
                           {route?.to.split(",")[0]}
                         </div>
-                        <div className="text-[10px] text-slate-400">{selectedBus.examCenter}</div>
+                        <div className="text-[10px] text-slate-400">
+                          {selectedBus.examCenter}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -444,7 +495,9 @@ export default function CheckoutPage() {
                           Date
                         </div>
                         <div className="text-sm font-semibold text-navy-800">
-                          {searchParams.date ? formatDate(searchParams.date) : "Flexible"}
+                          {searchParams.date
+                            ? formatDate(searchParams.date)
+                            : "Flexible"}
                         </div>
                       </div>
                       <div>
@@ -461,7 +514,7 @@ export default function CheckoutPage() {
                     <div className="flex flex-col items-center justify-center">
                       <div className="bg-white p-2 rounded-xl border border-slate-100">
                         <QRCodeSVG
-                          value={`ATTIK-BUS|${ticketId}|${passengerInfo.name}|${selectedSeats.map((s) => s.id).join(",")}|${selectedBus.name}`}
+                          value={`Atik-BUS|${ticketId}|${passengerInfo.name}|${selectedSeats.map((s) => s.id).join(",")}|${selectedBus.name}`}
                           size={100}
                           level="M"
                           bgColor="#ffffff"
@@ -483,11 +536,13 @@ export default function CheckoutPage() {
                           Boarding Point
                         </div>
                         <div className="text-sm text-green-700">
-                          Mojampur Gate, Kushtia Sadar — Near Mojampur Petrol Pump
+                          Mojampur Gate, Kushtia Sadar — Near Mojampur Petrol
+                          Pump
                         </div>
                         <div className="text-xs text-green-600 mt-1">
                           <Clock className="w-3 h-3 inline mr-1" />
-                          Report 30 minutes before departure ({formatTime(selectedBus.departureTime)})
+                          Report 30 minutes before departure (
+                          {formatTime(selectedBus.departureTime)})
                         </div>
                       </div>
                     </div>
@@ -502,12 +557,28 @@ export default function CheckoutPage() {
                           Journey Guidelines for Students
                         </div>
                         <ul className="text-xs text-navy-600 space-y-1.5">
-                          <li>• Carry your Admit Card and National ID / Birth Certificate</li>
-                          <li>• Arrive at the boarding point 30 minutes early</li>
-                          <li>• Keep this E-Ticket (digital or printed) for boarding verification</li>
-                          <li>• Contact our helpline at +880 1XXX-XXXXXX for any issues</li>
-                          <li>• Luggage limited to 1 bag per passenger (max 10 kg)</li>
-                          <li>• Follow all safety instructions from the bus supervisor</li>
+                          <li>
+                            • Carry your Admit Card and National ID / Birth
+                            Certificate
+                          </li>
+                          <li>
+                            • Arrive at the boarding point 30 minutes early
+                          </li>
+                          <li>
+                            • Keep this E-Ticket (digital or printed) for
+                            boarding verification
+                          </li>
+                          <li>
+                            • Contact our helpline at +880 1XXX-XXXXXX for any
+                            issues
+                          </li>
+                          <li>
+                            • Luggage limited to 1 bag per passenger (max 10 kg)
+                          </li>
+                          <li>
+                            • Follow all safety instructions from the bus
+                            supervisor
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -516,7 +587,8 @@ export default function CheckoutPage() {
                   {/* Footer */}
                   <div className="bg-slate-50 px-6 py-3 text-center">
                     <p className="text-[10px] text-slate-400">
-                      Attik Bus Service • Kushtia, Bangladesh • www.attikbus.com • +880 1XXX-XXXXXX
+                      Atik Bus Service • Kushtia, Bangladesh • www.Atikbus.com •
+                      +880 1XXX-XXXXXX
                     </p>
                   </div>
                 </div>

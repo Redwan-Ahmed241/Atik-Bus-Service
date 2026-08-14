@@ -37,7 +37,7 @@ export default function Navbar() {
             </div>
             <div>
               <h1 className="text-white font-bold text-lg leading-tight tracking-tight">
-                Attik Bus
+                Atik Bus
               </h1>
               <p className="text-navy-300 text-[10px] font-medium -mt-0.5 tracking-wider uppercase">
                 Service
@@ -74,7 +74,11 @@ export default function Navbar() {
             className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg transition"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>

@@ -42,9 +42,12 @@ export default function HomePage() {
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800" />
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
 
         {/* Floating decorative elements */}
         <motion.div
@@ -81,8 +84,8 @@ export default function HomePage() {
 
               <p className="text-lg text-navy-300 max-w-xl mb-8 leading-relaxed">
                 Book comfortable, reliable transport from Kushtia to every major
-                university admission exam center. AC coaches, student-friendly fares,
-                and guaranteed seats.
+                university admission exam center. AC coaches, student-friendly
+                fares, and guaranteed seats.
               </p>
 
               <div className="flex flex-wrap gap-6 text-sm text-navy-300">
@@ -106,13 +109,23 @@ export default function HomePage() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <div className="bg-white/[0.07] backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl">
-                <h2 className="text-white font-bold text-xl mb-6">Book Your Journey</h2>
+                <h2 className="text-white font-bold text-xl mb-6">
+                  Book Your Journey
+                </h2>
 
                 {/* Mode Toggle */}
                 <div className="flex bg-navy-800/80 rounded-2xl p-1.5 mb-6">
                   {[
-                    { value: "exam" as const, label: "Exam Routes", icon: GraduationCap },
-                    { value: "rental" as const, label: "Private Rental", icon: Bus },
+                    {
+                      value: "exam" as const,
+                      label: "Exam Routes",
+                      icon: GraduationCap,
+                    },
+                    {
+                      value: "rental" as const,
+                      label: "Private Rental",
+                      icon: Bus,
+                    },
                   ].map((option) => (
                     <button
                       key={option.value}
@@ -159,12 +172,20 @@ export default function HomePage() {
                         <GraduationCap className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-green-400" />
                         <select
                           value={searchParams.to}
-                          onChange={(e) => setSearchParams({ to: e.target.value })}
+                          onChange={(e) =>
+                            setSearchParams({ to: e.target.value })
+                          }
                           className="w-full pl-10 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm font-medium appearance-none cursor-pointer hover:border-green-500/30 transition-colors focus:outline-none focus:border-green-500/50 focus:ring-1 focus:ring-green-500/20"
                         >
-                          <option value="" className="bg-navy-800">Select exam destination...</option>
+                          <option value="" className="bg-navy-800">
+                            Select exam destination...
+                          </option>
                           {destinations.map((dest) => (
-                            <option key={dest.examId} value={dest.value} className="bg-navy-800">
+                            <option
+                              key={dest.examId}
+                              value={dest.value}
+                              className="bg-navy-800"
+                            >
                               {dest.label}
                             </option>
                           ))}
@@ -183,7 +204,9 @@ export default function HomePage() {
                           <input
                             type="date"
                             value={searchParams.date}
-                            onChange={(e) => setSearchParams({ date: e.target.value })}
+                            onChange={(e) =>
+                              setSearchParams({ date: e.target.value })
+                            }
                             className="w-full pl-10 pr-3 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm font-medium hover:border-green-500/30 transition-colors focus:outline-none focus:border-green-500/50 focus:ring-1 focus:ring-green-500/20 [color-scheme:dark]"
                           />
                         </div>
@@ -197,7 +220,9 @@ export default function HomePage() {
                           <select
                             value={searchParams.passengers}
                             onChange={(e) =>
-                              setSearchParams({ passengers: parseInt(e.target.value) })
+                              setSearchParams({
+                                passengers: parseInt(e.target.value),
+                              })
                             }
                             className="w-full pl-10 pr-3 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white text-sm font-medium appearance-none cursor-pointer hover:border-green-500/30 transition-colors focus:outline-none focus:border-green-500/50 focus:ring-1 focus:ring-green-500/20"
                           >
@@ -229,9 +254,12 @@ export default function HomePage() {
                     <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Bus className="w-8 h-8 text-green-400" />
                     </div>
-                    <h3 className="text-white font-semibold text-lg mb-2">Need a Private Bus?</h3>
+                    <h3 className="text-white font-semibold text-lg mb-2">
+                      Need a Private Bus?
+                    </h3>
                     <p className="text-navy-300 text-sm mb-6 max-w-xs mx-auto">
-                      Rent a full bus for your group — picnics, events, custom routes. 29 to 52 seater available.
+                      Rent a full bus for your group — picnics, events, custom
+                      routes. 29 to 52 seater available.
                     </p>
                     <motion.button
                       whileHover={{ scale: 1.01 }}
@@ -258,10 +286,26 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { value: "5,000+", label: "Students Served", color: "text-navy-800" },
-              { value: "150+", label: "Exam Trips Completed", color: "text-green-600" },
-              { value: "8+", label: "University Routes", color: "text-navy-800" },
-              { value: "4.8★", label: "Average Rating", color: "text-gold-500" },
+              {
+                value: "5,000+",
+                label: "Students Served",
+                color: "text-navy-800",
+              },
+              {
+                value: "150+",
+                label: "Exam Trips Completed",
+                color: "text-green-600",
+              },
+              {
+                value: "8+",
+                label: "University Routes",
+                color: "text-navy-800",
+              },
+              {
+                value: "4.8★",
+                label: "Average Rating",
+                color: "text-gold-500",
+              },
             ].map((stat, idx) => (
               <motion.div
                 key={stat.label}
@@ -271,10 +315,14 @@ export default function HomePage() {
                 transition={{ delay: idx * 0.1 }}
                 className="text-center py-6"
               >
-                <div className={`text-3xl sm:text-4xl font-bold ${stat.color} mb-1`}>
+                <div
+                  className={`text-3xl sm:text-4xl font-bold ${stat.color} mb-1`}
+                >
                   {stat.value}
                 </div>
-                <div className="text-sm text-slate-500 font-medium">{stat.label}</div>
+                <div className="text-sm text-slate-500 font-medium">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -285,9 +333,12 @@ export default function HomePage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy-800 mb-3">Upcoming University Admissions</h2>
+            <h2 className="text-3xl font-bold text-navy-800 mb-3">
+              Upcoming University Admissions
+            </h2>
             <p className="text-slate-500 max-w-xl mx-auto">
-              We&apos;re preparing dedicated bus routes for every major admission exam. Book early to secure your seat.
+              We&apos;re preparing dedicated bus routes for every major
+              admission exam. Book early to secure your seat.
             </p>
           </div>
 
@@ -310,23 +361,25 @@ export default function HomePage() {
                       exam.status === "open"
                         ? "bg-green-50 text-green-600"
                         : exam.status === "closing_soon"
-                        ? "bg-yellow-50 text-yellow-600"
-                        : exam.status === "sold_out"
-                        ? "bg-red-50 text-red-600"
-                        : "bg-slate-100 text-slate-500"
+                          ? "bg-yellow-50 text-yellow-600"
+                          : exam.status === "sold_out"
+                            ? "bg-red-50 text-red-600"
+                            : "bg-slate-100 text-slate-500"
                     }`}
                   >
                     {exam.status === "open"
                       ? "Open"
                       : exam.status === "closing_soon"
-                      ? "Closing Soon"
-                      : exam.status === "sold_out"
-                      ? "Sold Out"
-                      : "Coming Soon"}
+                        ? "Closing Soon"
+                        : exam.status === "sold_out"
+                          ? "Sold Out"
+                          : "Coming Soon"}
                   </span>
                 </div>
 
-                <h3 className="font-bold text-navy-800 text-sm mb-1">{exam.university}</h3>
+                <h3 className="font-bold text-navy-800 text-sm mb-1">
+                  {exam.university}
+                </h3>
                 <p className="text-xs text-slate-500 mb-3">{exam.examCenter}</p>
 
                 <div className="flex items-center justify-between pt-3 border-t border-slate-100">
@@ -356,9 +409,12 @@ export default function HomePage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy-800 mb-3">Why Students Trust Attik Bus</h2>
+            <h2 className="text-3xl font-bold text-navy-800 mb-3">
+              Why Students Trust Atik Bus
+            </h2>
             <p className="text-slate-500 max-w-xl mx-auto">
-              We understand the pressure of exam day. That&apos;s why every detail is designed around your comfort and peace of mind.
+              We understand the pressure of exam day. That&apos;s why every
+              detail is designed around your comfort and peace of mind.
             </p>
           </div>
 
@@ -396,8 +452,12 @@ export default function HomePage() {
                 >
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-bold text-navy-800 text-lg mb-2">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-bold text-navy-800 text-lg mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -416,7 +476,8 @@ export default function HomePage() {
               Need a Bus for Your Group?
             </h2>
             <p className="text-navy-300 mb-8 max-w-xl mx-auto">
-              Whether it&apos;s a club picnic, corporate retreat, or a custom route — we&apos;ve got you covered with 29 to 52-seater coaches.
+              Whether it&apos;s a club picnic, corporate retreat, or a custom
+              route — we&apos;ve got you covered with 29 to 52-seater coaches.
             </p>
             <motion.button
               whileHover={{ scale: 1.02 }}

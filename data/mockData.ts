@@ -15,9 +15,9 @@ export interface Route {
   id: string;
   from: string;
   to: string;
-  distance: string;
-  duration: string;
-  examId?: string;
+  toBangla: string;
+  tripType: "Round Trip" | "One Way";
+  fare: number;
 }
 
 export interface Bus {
@@ -45,6 +45,27 @@ export interface Seat {
 export type BusCapacity = "29-seater" | "40-seater" | "52-seater";
 export type TripType = "one-way" | "round-trip";
 export type PaymentMethod = "bkash" | "nagad" | "rocket" | "card";
+
+// ─── Company Information ──────────────────────────────────────
+
+export const companyInfo = {
+  name: "Attik Bus Service",
+  offerTitle: "ধামাকা অফার",
+  boardingPoint: "কুষ্টিয়া সরকারি কলেজ এর সামনে ৩ নং দোকান",
+  contactNumbers: ["01724-516450", "01517-808719"],
+};
+
+// ─── Routes ──────────────────────────────────────────────────
+
+export const routes: Route[] = [
+  { id: "1", from: "Kushtia", to: "Pabna", toBangla: "পাবনা", tripType: "Round Trip", fare: 400 },
+  { id: "2", from: "Kushtia", to: "Rajshahi", toBangla: "রাজশাহী", tripType: "Round Trip", fare: 650 },
+  { id: "3", from: "Kushtia", to: "Jessore", toBangla: "যশোর", tripType: "Round Trip", fare: 500 },
+  { id: "4", from: "Kushtia", to: "Dhaka", toBangla: "ঢাকা", tripType: "Round Trip", fare: 1300 },
+  { id: "5", from: "Kushtia", to: "Khulna", toBangla: "খুলনা", tripType: "Round Trip", fare: 1000 },
+  { id: "6", from: "Kushtia", to: "Hajee Danesh, Dinajpur", toBangla: "হাজী দানেশ দিনাজপুর", tripType: "Round Trip", fare: 1700 },
+  { id: "7", from: "Kushtia", to: "Comilla University", toBangla: "কুমিল্লা বিশ্ববিদ্যালয়", tripType: "Round Trip", fare: 2000 },
+];
 
 // ─── Upcoming University Exams ───────────────────────────────
 
@@ -131,29 +152,16 @@ export const upcomingExams: UpcomingExam[] = [
   },
 ];
 
-// ─── Routes ──────────────────────────────────────────────────
-
-export const routes: Route[] = [
-  { id: "r1", from: "Kushtia", to: "Savar, Dhaka", distance: "190 km", duration: "5h 30m", examId: "ju-2026" },
-  { id: "r2", from: "Kushtia", to: "Dhaka", distance: "230 km", duration: "6h", examId: "du-2026" },
-  { id: "r3", from: "Kushtia", to: "Rajshahi", distance: "120 km", duration: "3h", examId: "ru-2026" },
-  { id: "r4", from: "Kushtia", to: "Chittagong", distance: "450 km", duration: "10h", examId: "cu-2026" },
-  { id: "r5", from: "Kushtia", to: "Khulna", distance: "70 km", duration: "2h", examId: "kuet-2026" },
-  { id: "r6", from: "Kushtia", to: "Dhaka (BUET)", distance: "230 km", duration: "6h", examId: "buet-2026" },
-  { id: "r7", from: "Kushtia", to: "Kushtia (IU)", distance: "15 km", duration: "30m", examId: "iu-2026" },
-  { id: "r8", from: "Kushtia", to: "Dhaka (JnU)", distance: "230 km", duration: "6h 15m", examId: "jnu-2026" },
-];
-
 // ─── Buses ───────────────────────────────────────────────────
 
 export const buses: Bus[] = [
   // JU Buses
   {
     id: "bus-1",
-    name: "Attik Express - JU 01",
+    name: "Atik Express - JU 01",
     type: "AC",
     model: "Hino AK1J",
-    routeId: "r1",
+    routeId: "4",
     departureTime: "22:00",
     arrivalTime: "03:30",
     totalSeats: 40,
@@ -163,10 +171,10 @@ export const buses: Bus[] = [
   },
   {
     id: "bus-2",
-    name: "Attik Express - JU 02",
+    name: "Atik Express - JU 02",
     type: "Non-AC",
     model: "Hino AK1J",
-    routeId: "r1",
+    routeId: "4",
     departureTime: "21:00",
     arrivalTime: "02:30",
     totalSeats: 52,
@@ -176,10 +184,10 @@ export const buses: Bus[] = [
   },
   {
     id: "bus-3",
-    name: "Attik Premium - JU 03",
+    name: "Atik Premium - JU 03",
     type: "AC",
     model: "Scania K310",
-    routeId: "r1",
+    routeId: "4",
     departureTime: "23:00",
     arrivalTime: "04:00",
     totalSeats: 40,
@@ -190,10 +198,10 @@ export const buses: Bus[] = [
   // DU Buses
   {
     id: "bus-4",
-    name: "Attik Express - DU 01",
+    name: "Atik Express - DU 01",
     type: "AC",
     model: "Hino AK1J",
-    routeId: "r2",
+    routeId: "4",
     departureTime: "21:30",
     arrivalTime: "03:30",
     totalSeats: 40,
@@ -203,10 +211,10 @@ export const buses: Bus[] = [
   },
   {
     id: "bus-5",
-    name: "Attik Express - DU 02",
+    name: "Atik Express - DU 02",
     type: "Non-AC",
     model: "Hino RK1J",
-    routeId: "r2",
+    routeId: "4",
     departureTime: "20:00",
     arrivalTime: "02:00",
     totalSeats: 52,
@@ -217,10 +225,10 @@ export const buses: Bus[] = [
   // RU Buses
   {
     id: "bus-6",
-    name: "Attik Express - RU 01",
+    name: "Atik Express - RU 01",
     type: "AC",
     model: "Hino AK1J",
-    routeId: "r3",
+    routeId: "2",
     departureTime: "06:00",
     arrivalTime: "09:00",
     totalSeats: 40,
@@ -230,10 +238,10 @@ export const buses: Bus[] = [
   },
   {
     id: "bus-7",
-    name: "Attik Express - RU 02",
+    name: "Atik Express - RU 02",
     type: "Non-AC",
     model: "Ashok Leyland",
-    routeId: "r3",
+    routeId: "2",
     departureTime: "05:30",
     arrivalTime: "08:30",
     totalSeats: 52,
@@ -244,10 +252,10 @@ export const buses: Bus[] = [
   // CU Bus
   {
     id: "bus-8",
-    name: "Attik Long-Haul - CU 01",
+    name: "Atik Long-Haul - CU 01",
     type: "AC",
     model: "Scania K310",
-    routeId: "r4",
+    routeId: "4",
     departureTime: "19:00",
     arrivalTime: "05:00",
     totalSeats: 40,
@@ -258,10 +266,10 @@ export const buses: Bus[] = [
   // KUET Bus
   {
     id: "bus-9",
-    name: "Attik Express - KUET 01",
+    name: "Atik Express - KUET 01",
     type: "Non-AC",
     model: "Hino AK1J",
-    routeId: "r5",
+    routeId: "5",
     departureTime: "06:30",
     arrivalTime: "08:30",
     totalSeats: 52,
@@ -272,10 +280,10 @@ export const buses: Bus[] = [
   // IU Bus
   {
     id: "bus-10",
-    name: "Attik Shuttle - IU 01",
+    name: "Atik Shuttle - IU 01",
     type: "Non-AC",
     model: "Ashok Leyland",
-    routeId: "r7",
+    routeId: "7",
     departureTime: "07:00",
     arrivalTime: "07:30",
     totalSeats: 52,
