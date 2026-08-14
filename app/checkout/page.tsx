@@ -569,7 +569,7 @@ export default function CheckoutPage() {
                             boarding verification
                           </li>
                           <li>
-                            • Contact our helpline at +880 1XXX-XXXXXX for any
+                            • Contact our helpline at +880 1724-516450 for any
                             issues
                           </li>
                           <li>
@@ -588,7 +588,7 @@ export default function CheckoutPage() {
                   <div className="bg-slate-50 px-6 py-3 text-center">
                     <p className="text-[10px] text-slate-400">
                       Atik Bus Service • Kushtia, Bangladesh • www.Atikbus.com •
-                      +880 1XXX-XXXXXX
+                      +880 1724-516450
                     </p>
                   </div>
                 </div>

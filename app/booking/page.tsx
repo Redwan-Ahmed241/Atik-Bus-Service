@@ -38,8 +38,8 @@ function SeatIcon({ seat, onClick }: { seat: Seat; onClick: () => void }) {
         seat.status === "booked"
           ? "Already booked"
           : seat.status === "selected"
-          ? "Click to deselect"
-          : "Click to select"
+            ? "Click to deselect"
+            : "Click to select"
       }
     >
       {seat.id}
@@ -64,7 +64,9 @@ export default function BookingPage() {
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center">
           <Armchair className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-slate-700 mb-2">No Bus Selected</h2>
+          <h2 className="text-xl font-bold text-slate-700 mb-2">
+            No Bus Selected
+          </h2>
           <p className="text-slate-500 mb-4">Please select a bus first.</p>
           <button
             onClick={() => router.push("/buses")}
@@ -100,8 +102,8 @@ export default function BookingPage() {
           </button>
           <h1 className="text-2xl font-bold mb-1">Select Your Seats</h1>
           <p className="text-navy-300 text-sm">
-            {selectedBus.name} • Departs {formatTime(selectedBus.departureTime)} •{" "}
-            {formatBDT(selectedBus.fare)}/seat
+            {selectedBus.name} • Departs {formatTime(selectedBus.departureTime)}{" "}
+            • {formatBDT(selectedBus.fare)}/seat
           </p>
         </div>
       </div>
@@ -113,11 +115,14 @@ export default function BookingPage() {
             <div className="bg-white rounded-2xl border border-slate-100 p-5 sm:p-6">
               {/* Legend */}
               <div className="flex flex-wrap items-center gap-4 mb-6 pb-4 border-b border-slate-100">
-                <span className="text-sm font-semibold text-navy-800">Seat Legend:</span>
+                <span className="text-sm font-semibold text-navy-800">
+                  Seat Legend:
+                </span>
                 {[
                   { color: "bg-white border-green-300", label: "Available" },
                   {
-                    color: "bg-gradient-to-br from-green-500 to-green-600 border-green-600",
+                    color:
+                      "bg-gradient-to-br from-green-500 to-green-600 border-green-600",
                     label: "Selected",
                     textColor: "text-white",
                   },
@@ -127,7 +132,9 @@ export default function BookingPage() {
                     <div
                       className={`w-7 h-7 rounded-lg border-2 ${item.color} flex items-center justify-center`}
                     >
-                      <span className={`text-[8px] font-bold ${item.textColor || "text-slate-500"}`}>
+                      <span
+                        className={`text-[8px] font-bold ${item.textColor || "text-slate-500"}`}
+                      >
                         A1
                       </span>
                     </div>
@@ -139,7 +146,8 @@ export default function BookingPage() {
               {/* Info bar */}
               <div className="bg-navy-50 rounded-xl p-3 mb-6 flex items-center justify-between text-sm">
                 <span className="text-navy-700 font-medium">
-                  Select up to {searchParams.passengers} seat{searchParams.passengers > 1 ? "s" : ""}
+                  Select up to {searchParams.passengers} seat
+                  {searchParams.passengers > 1 ? "s" : ""}
                 </span>
                 <span className="text-green-600 font-semibold">
                   {selectedSeats.length}/{searchParams.passengers} selected
@@ -189,12 +197,18 @@ export default function BookingPage() {
                         className="grid grid-cols-[1fr_1fr_2rem_1fr_1fr] gap-2 items-center"
                       >
                         {seatA ? (
-                          <SeatIcon seat={seatA} onClick={() => toggleSeat(seatA.id)} />
+                          <SeatIcon
+                            seat={seatA}
+                            onClick={() => toggleSeat(seatA.id)}
+                          />
                         ) : (
                           <div />
                         )}
                         {seatB ? (
-                          <SeatIcon seat={seatB} onClick={() => toggleSeat(seatB.id)} />
+                          <SeatIcon
+                            seat={seatB}
+                            onClick={() => toggleSeat(seatB.id)}
+                          />
                         ) : (
                           <div />
                         )}
@@ -203,12 +217,18 @@ export default function BookingPage() {
                           {rowNum}
                         </div>
                         {seatC ? (
-                          <SeatIcon seat={seatC} onClick={() => toggleSeat(seatC.id)} />
+                          <SeatIcon
+                            seat={seatC}
+                            onClick={() => toggleSeat(seatC.id)}
+                          />
                         ) : (
                           <div />
                         )}
                         {seatD ? (
-                          <SeatIcon seat={seatD} onClick={() => toggleSeat(seatD.id)} />
+                          <SeatIcon
+                            seat={seatD}
+                            onClick={() => toggleSeat(seatD.id)}
+                          />
                         ) : (
                           <div />
                         )}
@@ -229,7 +249,9 @@ export default function BookingPage() {
           <div className="space-y-5">
             {/* Price Summary */}
             <div className="bg-white rounded-2xl border border-slate-100 p-5">
-              <h3 className="font-bold text-navy-800 text-lg mb-4">Booking Summary</h3>
+              <h3 className="font-bold text-navy-800 text-lg mb-4">
+                Booking Summary
+              </h3>
 
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
@@ -240,7 +262,9 @@ export default function BookingPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-500">Type</span>
-                  <span className="font-medium text-navy-800">{selectedBus.type}</span>
+                  <span className="font-medium text-navy-800">
+                    {selectedBus.type}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-500">Departure</span>
@@ -283,7 +307,9 @@ export default function BookingPage() {
 
             {/* Passenger Form */}
             <div className="bg-white rounded-2xl border border-slate-100 p-5">
-              <h3 className="font-bold text-navy-800 text-lg mb-4">Passenger Details</h3>
+              <h3 className="font-bold text-navy-800 text-lg mb-4">
+                Passenger Details
+              </h3>
 
               <div className="space-y-4">
                 <div>
@@ -296,7 +322,9 @@ export default function BookingPage() {
                       type="text"
                       placeholder="Enter your full name"
                       value={passengerInfo.name}
-                      onChange={(e) => setPassengerInfo({ name: e.target.value })}
+                      onChange={(e) =>
+                        setPassengerInfo({ name: e.target.value })
+                      }
                       className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     />
                   </div>
@@ -310,9 +338,11 @@ export default function BookingPage() {
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
                       type="tel"
-                      placeholder="+880 1XXX-XXXXXX"
+                      placeholder="+880 1724-516450"
                       value={passengerInfo.mobile}
-                      onChange={(e) => setPassengerInfo({ mobile: e.target.value })}
+                      onChange={(e) =>
+                        setPassengerInfo({ mobile: e.target.value })
+                      }
                       className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     />
                   </div>

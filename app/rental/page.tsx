@@ -23,8 +23,13 @@ import { busCapacityOptions } from "@/data/mockData";
 
 export default function RentalPage() {
   const router = useRouter();
-  const { rentalRequest, setRentalRequest, rentalSubmitted, submitRental, resetRental } =
-    useBookingStore();
+  const {
+    rentalRequest,
+    setRentalRequest,
+    rentalSubmitted,
+    submitRental,
+    resetRental,
+  } = useBookingStore();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const canSubmit =
@@ -54,10 +59,13 @@ export default function RentalPage() {
             <ChevronLeft className="w-4 h-4" />
             Back to Home
           </button>
-          <h1 className="text-2xl sm:text-3xl font-bold mb-2">Private Bus Rental</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2">
+            Private Bus Rental
+          </h1>
           <p className="text-navy-300 text-sm max-w-xl">
-            Need a bus for your group? Whether it&apos;s a picnic, corporate event, or custom
-            travel route — fill out the form below and we&apos;ll get back to you within 2 hours.
+            Need a bus for your group? Whether it&apos;s a picnic, corporate
+            event, or custom travel route — fill out the form below and
+            we&apos;ll get back to you within 2 hours.
           </p>
         </div>
       </div>
@@ -86,21 +94,27 @@ export default function RentalPage() {
                 Request Submitted Successfully!
               </h2>
               <p className="text-slate-500 mb-2 max-w-md mx-auto">
-                Thank you, <strong>{rentalRequest.contactName}</strong>! Your private bus rental
-                request has been received.
+                Thank you, <strong>{rentalRequest.contactName}</strong>! Your
+                private bus rental request has been received.
               </p>
               <p className="text-sm text-slate-400 mb-8">
                 Our team will contact you at{" "}
-                <strong className="text-navy-700">{rentalRequest.contactMobile}</strong> within
-                2 hours to confirm availability and pricing.
+                <strong className="text-navy-700">
+                  {rentalRequest.contactMobile}
+                </strong>{" "}
+                within 2 hours to confirm availability and pricing.
               </p>
 
               <div className="bg-slate-50 rounded-2xl p-5 mb-8 text-left max-w-sm mx-auto">
-                <h4 className="font-semibold text-navy-800 text-sm mb-3">Request Summary</h4>
+                <h4 className="font-semibold text-navy-800 text-sm mb-3">
+                  Request Summary
+                </h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-slate-500">Destination</span>
-                    <span className="font-medium text-navy-800">{rentalRequest.destination}</span>
+                    <span className="font-medium text-navy-800">
+                      {rentalRequest.destination}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">Trip Type</span>
@@ -111,7 +125,8 @@ export default function RentalPage() {
                   <div className="flex justify-between">
                     <span className="text-slate-500">Duration</span>
                     <span className="font-medium text-navy-800">
-                      {rentalRequest.estimatedDays} day{rentalRequest.estimatedDays > 1 ? "s" : ""}
+                      {rentalRequest.estimatedDays} day
+                      {rentalRequest.estimatedDays > 1 ? "s" : ""}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -153,13 +168,23 @@ export default function RentalPage() {
                   Trip Type
                 </label>
                 <div className="flex bg-slate-100 rounded-2xl p-1.5">
-                  {([
-                    { value: "one-way" as const, label: "One Way", icon: ArrowRight },
-                    { value: "round-trip" as const, label: "Round Trip", icon: ArrowLeftRight },
-                  ]).map((option) => (
+                  {[
+                    {
+                      value: "one-way" as const,
+                      label: "One Way",
+                      icon: ArrowRight,
+                    },
+                    {
+                      value: "round-trip" as const,
+                      label: "Round Trip",
+                      icon: ArrowLeftRight,
+                    },
+                  ].map((option) => (
                     <button
                       key={option.value}
-                      onClick={() => setRentalRequest({ tripType: option.value })}
+                      onClick={() =>
+                        setRentalRequest({ tripType: option.value })
+                      }
                       className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold transition-all duration-300 ${
                         rentalRequest.tripType === option.value
                           ? "bg-navy-800 text-white shadow-md"
@@ -185,7 +210,9 @@ export default function RentalPage() {
                       type="text"
                       placeholder="e.g. Cox's Bazar, Sylhet, Sundarbans..."
                       value={rentalRequest.destination}
-                      onChange={(e) => setRentalRequest({ destination: e.target.value })}
+                      onChange={(e) =>
+                        setRentalRequest({ destination: e.target.value })
+                      }
                       className="w-full pl-10 pr-4 py-3.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     />
                   </div>
@@ -201,7 +228,9 @@ export default function RentalPage() {
                     <select
                       value={rentalRequest.estimatedDays}
                       onChange={(e) =>
-                        setRentalRequest({ estimatedDays: parseInt(e.target.value) })
+                        setRentalRequest({
+                          estimatedDays: parseInt(e.target.value),
+                        })
                       }
                       className="w-full pl-10 pr-4 py-3.5 border border-slate-200 rounded-xl text-sm appearance-none cursor-pointer focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     >
@@ -224,7 +253,10 @@ export default function RentalPage() {
                     <select
                       value={rentalRequest.busCapacity}
                       onChange={(e) =>
-                        setRentalRequest({ busCapacity: e.target.value as typeof rentalRequest.busCapacity })
+                        setRentalRequest({
+                          busCapacity: e.target
+                            .value as typeof rentalRequest.busCapacity,
+                        })
                       }
                       className="w-full pl-10 pr-4 py-3.5 border border-slate-200 rounded-xl text-sm appearance-none cursor-pointer focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     >
@@ -266,7 +298,9 @@ export default function RentalPage() {
                     >
                       {opt.value}
                     </div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">{opt.price}</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      {opt.price}
+                    </div>
                   </button>
                 ))}
               </div>
@@ -281,7 +315,9 @@ export default function RentalPage() {
                   <textarea
                     placeholder="e.g. Need AC bus, food stops, specific pickup point..."
                     value={rentalRequest.specialNotes}
-                    onChange={(e) => setRentalRequest({ specialNotes: e.target.value })}
+                    onChange={(e) =>
+                      setRentalRequest({ specialNotes: e.target.value })
+                    }
                     rows={3}
                     className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all resize-none"
                   />
@@ -292,7 +328,9 @@ export default function RentalPage() {
               <div className="border-t border-slate-100 my-6" />
 
               {/* Contact Details */}
-              <h3 className="font-bold text-navy-800 text-base mb-4">Contact Information</h3>
+              <h3 className="font-bold text-navy-800 text-base mb-4">
+                Contact Information
+              </h3>
 
               <div className="grid sm:grid-cols-2 gap-5 mb-6">
                 <div>
@@ -305,7 +343,9 @@ export default function RentalPage() {
                       type="text"
                       placeholder="Your full name"
                       value={rentalRequest.contactName}
-                      onChange={(e) => setRentalRequest({ contactName: e.target.value })}
+                      onChange={(e) =>
+                        setRentalRequest({ contactName: e.target.value })
+                      }
                       className="w-full pl-10 pr-4 py-3.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     />
                   </div>
@@ -318,9 +358,11 @@ export default function RentalPage() {
                     <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
                       type="tel"
-                      placeholder="+880 1XXX-XXXXXX"
+                      placeholder="+880 1724-516450"
                       value={rentalRequest.contactMobile}
-                      onChange={(e) => setRentalRequest({ contactMobile: e.target.value })}
+                      onChange={(e) =>
+                        setRentalRequest({ contactMobile: e.target.value })
+                      }
                       className="w-full pl-10 pr-4 py-3.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     />
                   </div>
@@ -335,7 +377,9 @@ export default function RentalPage() {
                       type="text"
                       placeholder="e.g. Kushtia Rotaract Club"
                       value={rentalRequest.organizationName}
-                      onChange={(e) => setRentalRequest({ organizationName: e.target.value })}
+                      onChange={(e) =>
+                        setRentalRequest({ organizationName: e.target.value })
+                      }
                       className="w-full pl-10 pr-4 py-3.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/10 transition-all"
                     />
                   </div>

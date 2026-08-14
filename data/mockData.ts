@@ -18,6 +18,8 @@ export interface Route {
   toBangla: string;
   tripType: "Round Trip" | "One Way";
   fare: number;
+  duration: string;
+  distance: string;
 }
 
 export interface Bus {
@@ -58,13 +60,13 @@ export const companyInfo = {
 // ─── Routes ──────────────────────────────────────────────────
 
 export const routes: Route[] = [
-  { id: "1", from: "Kushtia", to: "Pabna", toBangla: "পাবনা", tripType: "Round Trip", fare: 400 },
-  { id: "2", from: "Kushtia", to: "Rajshahi", toBangla: "রাজশাহী", tripType: "Round Trip", fare: 650 },
-  { id: "3", from: "Kushtia", to: "Jessore", toBangla: "যশোর", tripType: "Round Trip", fare: 500 },
-  { id: "4", from: "Kushtia", to: "Dhaka", toBangla: "ঢাকা", tripType: "Round Trip", fare: 1300 },
-  { id: "5", from: "Kushtia", to: "Khulna", toBangla: "খুলনা", tripType: "Round Trip", fare: 1000 },
-  { id: "6", from: "Kushtia", to: "Hajee Danesh, Dinajpur", toBangla: "হাজী দানেশ দিনাজপুর", tripType: "Round Trip", fare: 1700 },
-  { id: "7", from: "Kushtia", to: "Comilla University", toBangla: "কুমিল্লা বিশ্ববিদ্যালয়", tripType: "Round Trip", fare: 2000 },
+  { id: "1", from: "Kushtia", to: "Pabna", toBangla: "পাবনা", tripType: "Round Trip", fare: 400, duration: "2h 30m", distance: "150 km" },
+  { id: "2", from: "Kushtia", to: "Rajshahi", toBangla: "রাজশাহী", tripType: "Round Trip", fare: 650, duration: "3h 15m", distance: "220 km" },
+  { id: "3", from: "Kushtia", to: "Jessore", toBangla: "যশোর", tripType: "Round Trip", fare: 500, duration: "2h", distance: "180 km" },
+  { id: "4", from: "Kushtia", to: "Dhaka", toBangla: "ঢাকা", tripType: "Round Trip", fare: 1300, duration: "5h 30m", distance: "300 km" },
+  { id: "5", from: "Kushtia", to: "Khulna", toBangla: "খুলনা", tripType: "Round Trip", fare: 1000, duration: "4h 30m", distance:  "350 km" },
+  { id: "6", from: "Kushtia", to: "Hajee Danesh, Dinajpur", toBangla: "হাজী দানেশ দিনাজপুর", tripType: "Round Trip", fare: 1700, duration: "6h 30m", distance: "450 km" },
+  { id: "7", from: "Kushtia", to: "Comilla University", toBangla: "কুমিল্লা বিশ্ববিদ্যালয়", tripType: "Round Trip", fare: 2000, duration: "7h", distance: "500 km" },
 ];
 
 // ─── Upcoming University Exams ───────────────────────────────
